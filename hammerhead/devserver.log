@@ -1,0 +1,391 @@
+
+> dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.168:3000
+- Environments: .env
+✓ Ready in 1713ms
+
+[seed] failed Error: Failed query: insert into "users" ("id", "name", "email", "phone", "password_hash", "role", "created_at") values (default, $1, $2, default, $3, $4, default)
+params: HammerHead Admin,admin@hammerhead.com,b9d7360c005821bd11e64c8aa7250bc3:0cfaf7e0389e5822dbe0f2697fac26023856662d48fa47b7f4475bbf3910490e8d6380ea531b3188eb6c743f1444901df753cd7dbe394693b02c2cb56e42b943,admin
+    at async ensureSeeded (src\lib\seed.ts:139:7)
+    at async getFeaturedProducts (src\lib\products.ts:41:3)
+    at async HomePage (src\app\page.tsx:48:35)
+  137 |     const [admin] = await db.select().from(users).where(eq(users.email, adminEmail)).limi...
+  138 |     if (!admin) {
+> 139 |       await db.insert(users).values({
+      |       ^
+  140 |         name: "HammerHead Admin",
+  141 |         email: adminEmail,
+  142 |         passwordHash: hashPassword(adminPassword), {
+  query: 'insert into "users" ("id", "name", "email", "phone", "password_hash", "role", "created_at") values (default, $1, $2, default, $3, $4, default)',
+  params: [
+    'HammerHead Admin',
+    'admin@hammerhead.com',
+    'b9d7360c005821bd11e64c8aa7250bc3:0cfaf7e0389e5822dbe0f2697fac26023856662d48fa47b7f4475bbf3910490e8d6380ea531b3188eb6c743f1444901df753cd7dbe394693b02c2cb56e42b943',
+    'admin'
+  ],
+  [cause]: error: duplicate key value violates unique constraint "users_email_unique"
+      at async ensureSeeded (src\lib\seed.ts:139:7)
+      at async getFeaturedProducts (src\lib\products.ts:41:3)
+      at async HomePage (src\app\page.tsx:48:35)
+    137 |     const [admin] = await db.select().from(users).where(eq(users.email, adminEmail)).limi...
+    138 |     if (!admin) {
+  > 139 |       await db.insert(users).values({
+        |       ^
+    140 |         name: "HammerHead Admin",
+    141 |         email: adminEmail,
+    142 |         passwordHash: hashPassword(adminPassword), {
+    length: 218,
+    severity: 'ERROR',
+    code: '23505',
+    detail: 'Key (email)=(admin@hammerhead.com) already exists.',
+    hint: undefined,
+    position: undefined,
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: 'public',
+    table: 'users',
+    column: undefined,
+    dataType: undefined,
+    constraint: 'users_email_unique',
+    file: 'nbtinsert.c',
+    line: '666',
+    routine: '_bt_check_unique'
+  }
+}
+ GET / 200 in 6.8s (next.js: 805ms, application-code: 6.0s)
+ GET /api/health 200 in 1948ms (next.js: 1706ms, application-code: 242ms)
+ GET /shop 200 in 3.8s (next.js: 1178ms, application-code: 2.7s)
+ GET / 200 in 1837ms (next.js: 9ms, application-code: 1828ms)
+ GET /logo.png 404 in 327ms (next.js: 134ms, application-code: 193ms)
+ GET / 200 in 2.1s (next.js: 16ms, application-code: 2.1s)
+ GET /logo.png 404 in 343ms (next.js: 27ms, application-code: 316ms)
+ GET /logo.png 404 in 241ms (next.js: 18ms, application-code: 223ms)
+ GET /admin 307 in 4.6s (next.js: 1822ms, application-code: 2.7s)
+ GET /login?next=/admin 200 in 2.6s (next.js: 1361ms, application-code: 1269ms)
+ GET /logo.png 404 in 537ms (next.js: 86ms, application-code: 451ms)
+ GET /login 200 in 71ms (next.js: 22ms, application-code: 48ms)
+ GET /login 200 in 111ms (next.js: 15ms, application-code: 96ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2477:13)
+ GET /register 200 in 1606ms (next.js: 1422ms, application-code: 184ms)
+ GET /logo.png 404 in 415ms (next.js: 43ms, application-code: 372ms)
+ GET /logo.png 404 in 346ms (next.js: 36ms, application-code: 309ms)
+ GET /admin 200 in 2.6s (next.js: 22ms, application-code: 2.6s)
+ POST /login 303 in 4.6s (next.js: 25ms, application-code: 4.5s)
+  └─ ƒ loginAction(undefined, {}) in 1800ms src/app/(auth)/actions.ts
+ GET /logo.png 404 in 1049ms (next.js: 18ms, application-code: 1031ms)
+ GET /admin/products 200 in 3.3s (next.js: 1472ms, application-code: 1836ms)
+ POST /admin/products 200 in 4.4s (next.js: 23ms, application-code: 4.3s)
+  └─ ƒ quickUpdateStock({}) in 1538ms src/app/admin/actions.ts
+ POST /admin/products 200 in 4.7s (next.js: 22ms, application-code: 4.7s)
+  └─ ƒ quickUpdateStock({}) in 1447ms src/app/admin/actions.ts
+ POST /admin/products 200 in 9.4s (next.js: 9ms, application-code: 9.4s)
+  └─ ƒ quickUpdateStock({}) in 7496ms src/app/admin/actions.ts
+ POST /admin/products 200 in 1692ms (next.js: 22ms, application-code: 1671ms)
+  └─ ƒ quickUpdateStock({}) in 326ms src/app/admin/actions.ts
+⨯ Error: Failed query: select "id", "name", "slug", "description", "category", "style", "type", "price", "on_sale", "discount_pct", "stock", "images", "video_url", "sizes", "size_chart", "featured", "is_new", "colors", "fabric", "created_at" from "products" where "products"."featured" = $1 order by "products"."id" desc limit $2
+params: true,8
+    at async HomePage (src\app\page.tsx:48:35)
+  46 |
+  47 | export default async function HomePage() {
+> 48 |   const [featured, sale, fresh] = await Promise.all([getFeaturedProducts(), getSaleProduct...
+     |                                   ^
+  49 |
+  50 |   return (
+  51 |     <div> {
+  query: 'select "id", "name", "slug", "description", "category", "style", "type", "price", "on_sale", "discount_pct", "stock", "images", "video_url", "sizes", "size_chart", "featured", "is_new", "colors", "fabric", "created_at" from "products" where "products"."featured" = $1 order by "products"."id" desc limit $2',
+  params: [ true, 8 ],
+  digest: '4081551058',
+  [cause]: Error: getaddrinfo EAI_AGAIN aws-0-ap-northeast-2.pooler.supabase.com
+      at async HomePage (src\app\page.tsx:48:35)
+    46 |
+    47 | export default async function HomePage() {
+  > 48 |   const [featured, sale, fresh] = await Promise.all([getFeaturedProducts(), getSaleProduct...
+       |                                   ^
+    49 |
+    50 |   return (
+    51 |     <div> {
+    errno: -3001,
+    code: 'EAI_AGAIN',
+    syscall: 'getaddrinfo',
+    hostname: 'aws-0-ap-northeast-2.pooler.supabase.com'
+  }
+}
+ GET / 500 in 689ms (next.js: 12ms, application-code: 677ms)
+ GET /logo.png 404 in 203ms (next.js: 18ms, application-code: 185ms)
+[browser] Uncaught Error: Failed query: select "id", "name", "slug", "description", "category", "style", "type", "price", "on_sale", "discount_pct", "stock", "images", "video_url", "sizes", "size_chart", "featured", "is_new", "colors", "fabric", "created_at" from "products" where "products"."featured" = $1 order by "products"."id" desc limit $2
+params: true,8
+    at NodePgPreparedQuery.queryWithCache (node_modules\src\pg-core\session.ts:73:11)
+    at <anonymous> (node_modules\src\node-postgres\session.ts:154:19)
+    at  HomePage (src\app\page.tsx:48:35)
+    at resolveErrorDev (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+  71 | 				return await query();
+  72 | 			} catch (e) {
+> 73 | 				throw new DrizzleQueryError(queryString, params, e as Error);
+     |       ^
+  74 | 			}
+  75 | 		}
+  76 |
+ GET /admin/customers 200 in 3.0s (next.js: 1174ms, application-code: 1805ms)
+ GET /admin/customers 200 in 1754ms (next.js: 23ms, application-code: 1731ms)
+ GET /admin/orders 200 in 1600ms (next.js: 1186ms, application-code: 414ms)
+ GET /admin 200 in 2.1s (next.js: 11ms, application-code: 2.1s)
+ GET /admin/products 200 in 869ms (next.js: 10ms, application-code: 859ms)
+⨯ Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at async (src\lib\auth.ts:58:18)
+    at async requireAdmin (src\lib\auth.ts:63:16)
+    at async quickUpdateStock (src\app\admin\actions.ts:95:17)
+  56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+  57 |   if (Number(exp) < Date.now()) return null;
+> 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+     |                  ^
+  59 |   return user ?? null;
+  60 | });
+  61 | {
+  query: 'select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2',
+  params: [ 1, 1 ],
+  digest: '99363850',
+  [cause]: Error: getaddrinfo EAI_AGAIN aws-0-ap-northeast-2.pooler.supabase.com
+      at async (src\lib\auth.ts:58:18)
+      at async requireAdmin (src\lib\auth.ts:63:16)
+      at async quickUpdateStock (src\app\admin\actions.ts:95:17)
+    56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+    57 |   if (Number(exp) < Date.now()) return null;
+  > 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+       |                  ^
+    59 |   return user ?? null;
+    60 | });
+    61 | {
+    errno: -3001,
+    code: 'EAI_AGAIN',
+    syscall: 'getaddrinfo',
+    hostname: 'aws-0-ap-northeast-2.pooler.supabase.com'
+  }
+}
+ POST /admin/products 500 in 2.3s (next.js: 25ms, application-code: 2.3s)
+  └─ ƒ quickUpdateStock({}) in 88ms src/app/admin/actions.ts
+[browser] Uncaught Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at NodePgPreparedQuery.queryWithCache (node_modules\src\pg-core\session.ts:73:11)
+    at <anonymous> (node_modules\src\node-postgres\session.ts:154:19)
+    at <anonymous> (src\lib\auth.ts:58:18)
+    at  requireAdmin (src\lib\auth.ts:63:16)
+    at  quickUpdateStock (src\app\admin\actions.ts:95:17)
+    at resolveErrorDev (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at form (<anonymous>)
+    at <anonymous> (src\app\admin\products\page.tsx:59:19)
+    at Array.map (<anonymous>:1:18)
+    at AdminProducts (src\app\admin\products\page.tsx:35:17)
+  71 | 				return await query();
+  72 | 			} catch (e) {
+> 73 | 				throw new DrizzleQueryError(queryString, params, e as Error);
+     |       ^
+  74 | 			}
+  75 | 		}
+  76 |
+ GET / 200 in 2.1s (next.js: 12ms, application-code: 2.1s)
+ GET /logo.png 404 in 259ms (next.js: 16ms, application-code: 243ms)
+ GET /logo.png 404 in 166ms (next.js: 10ms, application-code: 156ms)
+ GET /logo.png 404 in 161ms (next.js: 22ms, application-code: 140ms)
+ GET /logo.png 404 in 298ms (next.js: 28ms, application-code: 270ms)
+ GET / 200 in 1918ms (next.js: 14ms, application-code: 1904ms)
+ GET /logo.png 404 in 214ms (next.js: 32ms, application-code: 182ms)
+ GET /login 200 in 253ms (next.js: 71ms, application-code: 181ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2477:13)
+ GET /logo.png 404 in 479ms (next.js: 31ms, application-code: 448ms)
+ GET /register 200 in 231ms (next.js: 69ms, application-code: 162ms)
+ GET /logo.png 404 in 246ms (next.js: 17ms, application-code: 229ms)
+ GET /account 200 in 1886ms (next.js: 1335ms, application-code: 551ms)
+ POST /register 303 in 4.1s (next.js: 21ms, application-code: 4.0s)
+  └─ ƒ registerAction(undefined, {}) in 2040ms src/app/(auth)/actions.ts
+ GET /shop 200 in 613ms (next.js: 63ms, application-code: 551ms)
+ GET /product/junior-formal-suit-set 200 in 8.0s (next.js: 5.4s, application-code: 2.6s)
+ GET /product/junior-formal-suit-set 200 in 2.2s (next.js: 70ms, application-code: 2.2s)
+ GET /product/junior-formal-suit-set 200 in 1811ms (next.js: 16ms, application-code: 1795ms)
+ GET /checkout 200 in 3.5s (next.js: 2.0s, application-code: 1512ms)
+[email] SMTP not configured. Would send confirmation for HH-20261007-66Y2 to abdulhadihu90@gmail.com
+ POST /checkout 200 in 3.0s (next.js: 14ms, application-code: 3.0s)
+  └─ ƒ placeOrder({"customer":{"address":"orangi town karachi","city":"Karachi","email":"abdulhadihu90@gmail.com","...":"5 items not stringified"},"items":["[Object]"]}) in 2903ms src/app/checkout/actions.ts
+ GET /order/HH-20261007-66Y2?new=1 200 in 4.6s (next.js: 3.3s, application-code: 1277ms)
+ GET /logo.png 404 in 880ms (next.js: 121ms, application-code: 759ms)
+ GET / 200 in 2.3s (next.js: 62ms, application-code: 2.2s)
+ GET /logo.png 404 in 690ms (next.js: 62ms, application-code: 628ms)
+ GET /admin 200 in 1986ms (next.js: 24ms, application-code: 1962ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2477:13)
+ GET /logo.png 404 in 556ms (next.js: 19ms, application-code: 538ms)
+ GET /admin/products 200 in 757ms (next.js: 55ms, application-code: 702ms)
+ GET /admin/customers 200 in 1812ms (next.js: 59ms, application-code: 1753ms)
+ GET /admin/customers 200 in 594ms (next.js: 20ms, application-code: 574ms)
+ GET /admin/orders 200 in 373ms (next.js: 18ms, application-code: 355ms)
+ GET /admin/products 200 in 2.2s (next.js: 18ms, application-code: 2.2s)
+ GET /admin/products/new 200 in 2.0s (next.js: 1935ms, application-code: 77ms)
+ GET /admin/products/new 200 in 82ms (next.js: 9ms, application-code: 73ms)
+ POST /admin/products/new 200 in 16.0s (next.js: 12ms, application-code: 16.0s)
+  └─ ƒ saveProduct({"category":"women","colors":["black"],"description":"testingqwertyuiopasdfghhhhjjjjjjjjjjjjkkkkkkkkkkkkkkklzxcvbnm","...":"14 items not stringified"}) in 15991ms src/app/admin/actions.ts
+ POST /api/upload 200 in 3.4s (next.js: 1664ms, application-code: 1767ms)
+ GET /api/media/1791387818636-32b3fa42.jpg 200 in 3.1s (next.js: 3.0s, application-code: 45ms)
+⨯ Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at async (src\lib\auth.ts:58:18)
+    at async requireAdmin (src\lib\auth.ts:63:16)
+    at async POST (src\app\api\upload\route.ts:13:17)
+  56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+  57 |   if (Number(exp) < Date.now()) return null;
+> 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+     |                  ^
+  59 |   return user ?? null;
+  60 | });
+  61 | {
+  query: 'select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2',
+  params: [ 1, 1 ],
+  [cause]: Error: getaddrinfo ENOTFOUND aws-0-ap-northeast-2.pooler.supabase.com
+      at async (src\lib\auth.ts:58:18)
+      at async requireAdmin (src\lib\auth.ts:63:16)
+      at async POST (src\app\api\upload\route.ts:13:17)
+    56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+    57 |   if (Number(exp) < Date.now()) return null;
+  > 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+       |                  ^
+    59 |   return user ?? null;
+    60 | });
+    61 | {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'aws-0-ap-northeast-2.pooler.supabase.com'
+  }
+}
+ POST /api/upload 500 in 12.1s (next.js: 24ms, application-code: 12.1s)
+⨯ Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at async (src\lib\auth.ts:58:18)
+    at async requireAdmin (src\lib\auth.ts:63:16)
+    at async POST (src\app\api\upload\route.ts:13:17)
+  56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+  57 |   if (Number(exp) < Date.now()) return null;
+> 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+     |                  ^
+  59 |   return user ?? null;
+  60 | });
+  61 | {
+  query: 'select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2',
+  params: [ 1, 1 ],
+  [cause]: Error: getaddrinfo ENOTFOUND aws-0-ap-northeast-2.pooler.supabase.com
+      at async (src\lib\auth.ts:58:18)
+      at async requireAdmin (src\lib\auth.ts:63:16)
+      at async POST (src\app\api\upload\route.ts:13:17)
+    56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+    57 |   if (Number(exp) < Date.now()) return null;
+  > 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+       |                  ^
+    59 |   return user ?? null;
+    60 | });
+    61 | {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'aws-0-ap-northeast-2.pooler.supabase.com'
+  }
+}
+ POST /api/upload 500 in 11.9s (next.js: 18ms, application-code: 11.9s)
+⨯ Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at async (src\lib\auth.ts:58:18)
+    at async requireAdmin (src\lib\auth.ts:63:16)
+    at async saveProduct (src\app\admin\actions.ts:35:17)
+  56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+  57 |   if (Number(exp) < Date.now()) return null;
+> 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+     |                  ^
+  59 |   return user ?? null;
+  60 | });
+  61 | {
+  query: 'select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2',
+  params: [ 1, 1 ],
+  digest: '1419260355',
+  [cause]: Error: getaddrinfo ENOTFOUND aws-0-ap-northeast-2.pooler.supabase.com
+      at async (src\lib\auth.ts:58:18)
+      at async requireAdmin (src\lib\auth.ts:63:16)
+      at async saveProduct (src\app\admin\actions.ts:35:17)
+    56 |   if (sign(`${uid}.${exp}`) !== sig) return null;
+    57 |   if (Number(exp) < Date.now()) return null;
+  > 58 |   const [user] = await db.select().from(users).where(eq(users.id, Number(uid))).limit(1);
+       |                  ^
+    59 |   return user ?? null;
+    60 | });
+    61 | {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'aws-0-ap-northeast-2.pooler.supabase.com'
+  }
+}
+ POST /admin/products/new 500 in 1813ms (next.js: 27ms, application-code: 1786ms)
+  └─ ƒ saveProduct({"category":"women","colors":["black"],"description":"testingqwertyuiopasdfghhhhjjjjjjjjjjjjkkkkkkkkkkkkkkklzxcvbnm","...":"14 items not stringified"}) in 20ms src/app/admin/actions.ts
+[browser] Uncaught Error: Failed query: select "id", "name", "email", "phone", "password_hash", "role", "created_at" from "users" where "users"."id" = $1 limit $2
+params: 1,1
+    at NodePgPreparedQuery.queryWithCache (node_modules\src\pg-core\session.ts:73:11)
+    at <anonymous> (node_modules\src\node-postgres\session.ts:154:19)
+    at <anonymous> (src\lib\auth.ts:58:18)
+    at  requireAdmin (src\lib\auth.ts:63:16)
+    at  saveProduct (src\app\admin\actions.ts:35:17)
+    at resolveErrorDev (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:1919:105)
+    at processFullStringRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2434:29)
+    at processFullBinaryRow (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2393:9)
+    at processBinaryChunk (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2502:221)
+    at progress (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js:2689:13)
+    at NewProductPage (src\app\admin\products\new\page.tsx:7:7)
+  71 | 				return await query();
+  72 | 			} catch (e) {
+> 73 | 				throw new DrizzleQueryError(queryString, params, e as Error);
+     |       ^
+  74 | 			}
+  75 | 		}
+  76 |
+ GET /api/health 200 in 1985ms (next.js: 17ms, application-code: 1968ms)
+ GET /api/health 200 in 1550ms (next.js: 9ms, application-code: 1540ms)
+ GET / 200 in 1785ms (next.js: 26ms, application-code: 1759ms)
+ GET /admin/products/new 200 in 2.4s (next.js: 12ms, application-code: 2.4s)
+ GET /logo.png 404 in 610ms (next.js: 32ms, application-code: 579ms)
+ GET /admin/products 200 in 914ms (next.js: 58ms, application-code: 856ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2477:13)
+ GET /admin/products/14 200 in 4.9s (next.js: 3.4s, application-code: 1417ms)
+ POST /admin/products/14 200 in 1913ms (next.js: 30ms, application-code: 1883ms)
+  └─ ƒ quickUpdateStock({}) in 1382ms src/app/admin/actions.ts
+ GET /admin/products 200 in 849ms (next.js: 23ms, application-code: 826ms)
+ POST /admin/products 200 in 1223ms (next.js: 8ms, application-code: 1215ms)
+  └─ ƒ quickUpdateStock({}) in 462ms src/app/admin/actions.ts
+ GET / 200 in 2.5s (next.js: 52ms, application-code: 2.5s)
+ GET /logo.png 404 in 642ms (next.js: 42ms, application-code: 599ms)
+ GET /shop?category=men 200 in 2.3s (next.js: 30ms, application-code: 2.3s)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior (file://C:/Users/Hp EliteBook 830 G6/Desktop/hammerhead/.next/dev/static/chunks/node_modules_next_dist_115brz8._.js:2477:13)
+ GET / 200 in 2.1s (next.js: 19ms, application-code: 2.1s)
+ GET /logo.png 404 in 831ms (next.js: 74ms, application-code: 756ms)
+ GET / 200 in 1731ms (next.js: 11ms, application-code: 1720ms)
+ GET /logo.png 404 in 502ms (next.js: 19ms, application-code: 483ms)
+ GET /account 200 in 614ms (next.js: 69ms, application-code: 545ms)
+ GET /admin 307 in 2.1s (next.js: 15ms, application-code: 2.1s)
+ GET /account 200 in 1075ms (next.js: 11ms, application-code: 1064ms)
+ GET /logo.png 404 in 474ms (next.js: 12ms, application-code: 463ms)
+ GET /admin 307 in 19.4s (next.js: 15ms, application-code: 19.4s)
+ GET /account 200 in 431ms (next.js: 10ms, application-code: 421ms)
+ GET /logo.png 404 in 447ms (next.js: 23ms, application-code: 424ms)
+  Reload env: .env
+ GET / 200 in 1974ms (next.js: 7ms, application-code: 1968ms)
+ GET /account 200 in 2.3s (next.js: 39ms, application-code: 2.2s)
+ GET /shop?category=men 200 in 2.9s (next.js: 228ms, application-code: 2.7s)
+ GET / 200 in 2.5s (next.js: 145ms, application-code: 2.4s)
+[?25h
